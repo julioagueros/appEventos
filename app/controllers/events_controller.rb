@@ -3,11 +3,31 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.all
+    #se agregan las categorias para poder navegar a través de ellas.
+    @categories = Category.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @events }
     end
+  end
+
+
+  #Para poder mostrar los eventos de una categoria especifica
+  # GET /events/1/categorize
+  def categorize
+    #sólo muestra los eventos de cierta categoría.
+    @events = Event.where(["category_id = ?", params[:id]]).all
+
+    #se agregan las categorias para poder navegar a través de ellas.
+    @categories = Category.all
+
+    render :index
+
+   # respond_to do |format|
+    #  format.html # categorize.html.erb
+    #  format.json { render json: @events }
+    #end
   end
 
   # GET /events/1

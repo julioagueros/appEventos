@@ -1,3 +1,32 @@
 // Place all the styles related to the Events controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+html { height: 100% }
+body { height: 100%; margin: 0; padding: 0 }
+
+#wrapper {
+	height: 97%;
+	width: 65%;
+	margin:0 auto;
+	padding-top:1%;
+	padding-left:5%;
+	padding-right:5%;
+	background-color:#fff;
+}
+
+#form {
+	float:left;
+	padding-top:6px;
+	padding-left:20px;
+	padding-right:20px;
+	margin:0 auto;
+}
+
+
+#map_canvas {
+	float:right;
+	padding-left:20px;
+	width:50%;
+	height:70%;
+	margin:0 auto;
+}

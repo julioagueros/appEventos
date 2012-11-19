@@ -1,5 +1,12 @@
 NueventoApp::Application.routes.draw do
-  resources :events
+ 
+  
+
+  resources :events do
+    member do
+      get 'categorize'
+    end
+  end
 
   resources :categories
 

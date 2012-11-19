@@ -1,3 +1,27 @@
+<%= content_for(:head) do %>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    -<!--<style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      #map_canvas { height: 100% }
+    </style>-->
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYVUno5aIvhG_MHDc7WtrnA91derLa9WQ&sensor=false">
+    </script>
+    <script type="text/javascript">
+      function initialize() {
+        var mapOptions = {
+          center: new google.maps.LatLng(-34.397, 150.644),
+          zoom: 8,
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("map_canvas"),
+            mapOptions);
+      }
+    </script>
+
+<% end %>
+
 <%= form_for(@event) do |f| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
@@ -11,37 +35,51 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+  <div id="wrapper">
+
+    <div id = "form">
+      <div class="field">
+        <%= f.label :name %><br />
+        <%= f.text_field :name %>
+      </div>
+      <div class="field">
+        <%= f.label :category_id %>
+        <%= f.collection_select :category_id, Category.all, :id, :name %>
+      </div>
+      <div class="field">
+        <%= f.label :startDateTime %><br />
+        <%= f.datetime_select :startDateTime %>
+      </div>
+      <div class="field">
+        <%= f.label :endDateTime %><br />
+        <%= f.datetime_select :endDateTime %>
+      </div>
+      <div class="field">
+        <%= f.label :latitude %><br />
+        <!--<%= f.hidden_field :user_id,  :value => @userId %>-->
+        <%= f.text_field :latitude %>
+      </div>
+      <div class="field">
+        <%= f.label :longitude %><br />
+        <%= f.text_field :longitude %>
+      </div>
+      <div class="field">
+        <%= f.label :description %><br />
+        <%= f.text_area :description %>
+      </div>
+      <div class="actions">
+        <%= f.submit %>
+      </div>
+         
+      <% end %>
+
+ 
+    </div>
+
+
   </div>
-  <div class="field">
-    <%= f.label :startDateTime %><br />
-    <%= f.datetime_select :startDateTime %>
-  </div>
-  <div class="field">
-    <%= f.label :endDateTime %><br />
-    <%= f.datetime_select :endDateTime %>
-  </div>
-  <div class="field">
-    <%= f.label :latitude %><br />
-    <%= f.text_field :latitude %>
-  </div>
-  <div class="field">
-    <%= f.label :longitude %><br />
-    <%= f.text_field :longitude %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <!--<%= f.label :category %><br />
-    <%= f.text_field :category %> -->
-    <%= f.label :category_id %>
-    <%= f.collection_select :category_id, Category.all, :id, :name %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+
+    <div id="map_canvas">
+    </div>  
+
+

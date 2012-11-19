@@ -1,5 +1,13 @@
 <h1>Listing events</h1>
 
+<h3>Browse by category:</h3>
+<% @categories.each do |category| %>
+<td><%= link_to category.name, categorize_event_path(category) %></td> ||
+<% end %>
+
+<br> </br>
+<br> </br>
+
 <table>
   <tr>
     <th>Name</th>
