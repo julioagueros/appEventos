@@ -4,6 +4,27 @@
 <% @categories.each do |category| %>
 <td><%= link_to category.name, categorize_event_path(category) %></td> ||
 <% end %>
+    
+<%= content_for(:head) do %>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYVUno5aIvhG_MHDc7WtrnA91derLa9WQ&sensor=false">
+    </script>
+    
+    <!--Se serializan los eventos a un JSON para poder pasarlo al 
+        javascript. Éste es el tag para poder crear un script de javascript.
+        El raw es para escapar caracteres.
+        el Window es para poder compartir la variable para todos los javascripts que referencia esta página-->
+    <%= javascript_tag do %>
+        window.eventosJson = <%=raw @events.to_json %>;
+    <% end %>
+    <!--se incluye el archivo assets/javascripts/mapitaindex.js-->    
+    <%= javascript_include_tag "mapitaindex" %>
+
+
+<% end %>
+
 
 <br> </br>
 <br> </br>
@@ -39,5 +60,8 @@
 </table>
 
 <br />
+    <!--Se llama a renderizar el canvas del googlemap-->
+    <div id="map_canvas">
+    </div>  
 
 <%= link_to 'New Event', new_event_path %>
