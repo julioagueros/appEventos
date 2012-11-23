@@ -2,12 +2,13 @@ var geocoder;
 var map;
 var lat;
 var lng;
+var marker;
 
 function initialize() {
 	geocoder = new google.maps.Geocoder();
 	var myOptions = {
-		zoom: 7,
-		center: new google.maps.LatLng(9.75, -84),
+		zoom: 16,
+		center: new google.maps.LatLng(9.85398990406704, -83.90923976898193),
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
@@ -18,11 +19,19 @@ function initialize() {
 }
 
 function placeMarker(location) {
-	var marker = new google.maps.Marker({
+
+	//var marker = new google.maps.Marker({
+	if (!marker){
+		marker = new google.maps.Marker({
 		position: location,
 		map: map,
+		animation: google.maps.Animation.DROP,
 		draggable:true,
-	});
+		});
+	}
+	else {
+		marker.setPosition(location);
+	}
 
 	map.setCenter(location);
 	getPosSendPosToInput(marker);
