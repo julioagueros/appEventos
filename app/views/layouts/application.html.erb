@@ -1,7 +1,17 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>NueventoApp</title>
+  <title>Nuevento App: The event APP</title>
+<!--diseño-->
+<link href="http://fonts.googleapis.com/css?family=Arvo" rel="stylesheet" type="text/css" />
+<link href="http://fonts.googleapis.com/css?family=Oswald" rel="stylesheet" type="text/css" />
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+<script type="text/javascript" src="jquery/jquery-1.4.2.min.js"></script>
+<script type="text/javascript" src="jquery/jquery.gallerax-0.2.js"></script>
+<style type="text/css">
+@import "gallery.css";
+</style>
+<!--/diseño-->
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -9,16 +19,43 @@
   <%= yield(:head) %>
 </head>
 <body onload="initialize()">
-	<div id="user_nav">
-  		<% if current_user %>
-    		Welcome, <%= current_user.name %>!
-    		<%= link_to "Sign Out", signout_path %>
-  		<% else %>
-    		<%= link_to "Sign in with Twitter", "/auth/twitter" %>
-  		<% end %>
-	</div>
+	
+    <div id="user_nav">
+      <% if current_user %>
+        Welcome, <%= current_user.name %>!
+        <%= link_to "Sign Out", signout_path %>
+      <% else %>
+        <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+      <% end %>
+  </div>
+
+  <br />
+
+    <div id="header">
+    <div id="logo">
+      <div id="banner"><a href="/"><img src="assets/logo.gif"/></a></div>
+    </div>
+  </div>
+  <!-- end #header -->
+  <div id="menu">
+    <ul>
+      <li class="current_page_item"><a href="/">Home</a></li>
+      <li><a href="#">See Events</a></li>
+      <li><a href="#">Create an Event</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Links</a></li>
+      <li class="last"><a href="#">Contact</a></li>
+    </ul>
+  </div>
+
+
+
 
 <%= yield %>
+
+<div id="footer">
+  <p>Copyright (c) 2012 correcriminal.org. All rights reserved. Design by <a href="http://www.freecsstemplates.org">FCT</a>.</p>
+</div>
 
 </body>
 </html>

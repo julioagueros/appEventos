@@ -1,10 +1,3 @@
-<h1>Listing events</h1>
-
-<h3>Browse by category:</h3>
-<% @categories.each do |category| %>
-<td><%= link_to category.name, categorize_event_path(category) %></td> ||
-<% end %>
-    
 <!-- se utiliza el yield colocado en applicacion.html.erb para introducir el siguiente bloque. -->
 <%= content_for(:head) do %>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
@@ -26,10 +19,21 @@
 
 <% end %>
 
+    <div id="welcome">
+        <h2 class="title">Listing events</h2>
+        <div class="entry">
+            <h3>Browse by category:</h3>
+            <br />
+            <% @categories.each do |category| %>
+            <td><%= link_to category.name, categorize_event_path(category) %></td> ||
+            <% end %>
+            <br />
+            <%= link_to 'New Event', new_event_path %>       
+        </div>
+    </div>
 
-<br> </br>
-<br> </br>
 
+<div id = "wrapper">
 <table>
   <tr>
     <th>Name</th>
@@ -65,4 +69,6 @@
     <div id="map_canvas">
     </div>  
 
-<%= link_to 'New Event', new_event_path %>
+</div>
+
+

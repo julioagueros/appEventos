@@ -4,7 +4,7 @@ var lat;
 var lng;
 var marker;
 
-alert(eventoJson.name)
+//alert(eventoJson.name)
 
 function initialize() {
 	geocoder = new google.maps.Geocoder();
@@ -57,17 +57,6 @@ function placeMarker(location) {
 	
 	google.maps.event.addListener(marker, 'dragend', function(event) {
 		getPosSendPosToInput(marker);
-	});
-}
-
-function showInfo(marker, number) {
-	var message = ["This","is","the","secret","message"];
-	var infowindow = new google.maps.InfoWindow({
-		content: message[number],
-		size: new google.maps.Size(50,50)
-	});
-	google.maps.event.addListener(marker, 'click', function() {
-		infowindow.open(map,marker);
 	});
 }
 
