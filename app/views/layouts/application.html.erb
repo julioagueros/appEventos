@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <!-- se agrega la función yield que permite tener un campo en el cual se agregue contenido desde una vista-->
   <%= yield(:head) %>
 </head>
 <body onload="initialize()">

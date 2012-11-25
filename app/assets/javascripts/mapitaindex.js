@@ -1,6 +1,11 @@
+/**
+	Javascript para mostrar googlemap en el index y en categorize de eventos.
+*/
+
 var geocoder;
 var map;
 
+//alert(eventosJson[2].category_name);
 
 function initialize() {
 	geocoder = new google.maps.Geocoder();
@@ -11,16 +16,14 @@ function initialize() {
 	};
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 	
-
+	//Para a cada evento (pasado como un JSON llamado eventosJson) extraer la información necesaria para markers e infowindows.
 	for (var i = 0, len = eventosJson.length; i < len; i++) {
 		var name = eventosJson[i].name;
 		var description = eventosJson[i].description;
+		var category_name = eventosJson[i].category_name; //campo existente por query que permite acceder al nombre.
 		var latitude = eventosJson[i].latitude;
 		var longitude = eventosJson[i].longitude;
-		/*var phone = json[i]['fields'].phone;
-		var email = json[i]['fields'].email;
-		var latitud = json[i]['fields'].latitud;
-		var longitud = json[i]['fields'].longitud;*/
+		var starttime = eventosJson[i].startDateTime;
 		
 		var location = new google.maps.LatLng(latitude, longitude);
 		
@@ -28,7 +31,8 @@ function initialize() {
 			position: location,
 			map: map
 		});
-		showInfo(marker, name, description);
+		//Se llama a la función que crea los infowindows de cada marker.
+		showInfo(marker, name, category_name, description, starttime);
 	}
 }
 
@@ -49,9 +53,11 @@ function codeAddress() {
 }
 
 
-function showInfo(marker, name, description) {
+//función para crear los infowindows del googlemaps.
+function showInfo(marker, name, category_name, description, starttime) {
 	var infowindow = new google.maps.InfoWindow( {
-		content: name + "\n" + description,
+		content: "<p> Event category: " + category_name + "<br />" + "Name: " + name + "<br />" + "What is it?: "
+		 + description + "<br />" + "Starts at: " + starttime + "</p>",
 		size: new google.maps.Size(50,50)
 	});
 	google.maps.event.addListener(marker, 'click', function() {

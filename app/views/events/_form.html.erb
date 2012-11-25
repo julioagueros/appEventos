@@ -8,6 +8,14 @@
     <script type="text/javascript"
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYVUno5aIvhG_MHDc7WtrnA91derLa9WQ&sensor=false">
     </script>
+
+        <!--Se serializan los eventos a un JSON para poder pasarlo al 
+        javascript. Éste es el tag para poder crear un script de javascript.
+        El raw es para escapar caracteres.
+        el Window es para poder compartir la variable para todos los javascripts que referencia esta página-->
+    <%= javascript_tag do %>
+        window.eventoJson = <%=raw @event.to_json %>;
+    <% end %>
     
     <%= javascript_include_tag "mapita" %>
     <!--<script type="text/javascript">

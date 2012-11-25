@@ -2,9 +2,17 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    #@events = Event.all
+
+    #Se crea un query que contiene el nombre de la categoría para poder mostrarlo en los infowindows
+    #del googlemap del index.
+    @events = Event.find_by_sql("SELECT e.*, c.name as category_name FROM events e, categories c WHERE e.category_id = c.id")
+
+
     #se agregan las categorias para poder navegar a través de ellas.
     @categories = Category.all
+
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -17,11 +25,13 @@ class EventsController < ApplicationController
   # GET /events/1/categorize
   def categorize
     #sólo muestra los eventos de cierta categoría.
-    @events = Event.where(["category_id = ?", params[:id]]).all
-
+    #@events = Event.where(["category_id = ?", params[:id]]).all
+    @events = Event.find_by_sql(["SELECT e.*, c.name as category_name FROM events e, categories c WHERE c.id = ? AND e.category_id = c.id", params[:id]])
+    
     #se agregan las categorias para poder navegar a través de ellas.
     @categories = Category.all
 
+    #se renderiza la misma vista del index para reutilización.
     render :index
 
    # respond_to do |format|

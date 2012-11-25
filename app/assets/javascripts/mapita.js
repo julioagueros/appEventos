@@ -4,6 +4,8 @@ var lat;
 var lng;
 var marker;
 
+alert(eventoJson.name)
+
 function initialize() {
 	geocoder = new google.maps.Geocoder();
 	var myOptions = {
@@ -12,6 +14,21 @@ function initialize() {
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+
+	if (eventoJson !== null){
+		//var name = eventoJson.name;
+		//var description = eventoJson.description;
+		var latitude = eventoJson.latitude;
+		var longitude = eventoJson.longitude;
+		//var starttime = eventoJson.startDateTime;
+		
+		var location = new google.maps.LatLng(latitude, longitude);
+		
+		marker = new google.maps.Marker({
+			position: location,
+			map: map
+		});
+	}
 	
 	google.maps.event.addListener(map, 'click', function(event) {
 		placeMarker(event.latLng);
@@ -20,7 +37,7 @@ function initialize() {
 
 function placeMarker(location) {
 
-	//var marker = new google.maps.Marker({
+	//si no existe un market, entonces se crea uno.
 	if (!marker){
 		marker = new google.maps.Marker({
 		position: location,
@@ -29,11 +46,13 @@ function placeMarker(location) {
 		draggable:true,
 		});
 	}
+	//de lo contrario, se cambia su posición, nada más.
 	else {
 		marker.setPosition(location);
 	}
 
 	map.setCenter(location);
+	//se envía la posición al form.
 	getPosSendPosToInput(marker);
 	
 	google.maps.event.addListener(marker, 'dragend', function(event) {
@@ -53,8 +72,8 @@ function showInfo(marker, number) {
 }
 
 // Entradas: Un marcador
-// Proceso:	La función obtiene la latitud y longitud del marcador que ingresa
-// Salidas:	La latitud y longitud en textfields escondidos en el form
+// Proceso:	La función obtiene la latitud y longitud del marcador que ingresa.
+// Salidas:	La latitud y longitud en textfields escondidos en el form.
 function getPosSendPosToInput(marker) {
 	latlng = marker.getPosition();
 	lat = latlng.lat();

@@ -1,4 +1,6 @@
 class SessionsController < ApplicationController
+  
+  #función para crear el usuario en session (logearlo).
   def create
         #raise request.env["omniauth.auth"].to_yaml
     auth = request.env["omniauth.auth"]
@@ -7,7 +9,7 @@ class SessionsController < ApplicationController
     redirect_to events_url, :notice => "Signed in!"
   end
 
-
+  #función para log out.
 	def destroy
 		session[:user_id] = nil
   		redirect_to events_url, :notice => "Signed out!"

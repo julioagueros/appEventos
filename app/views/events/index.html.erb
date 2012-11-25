@@ -5,6 +5,7 @@
 <td><%= link_to category.name, categorize_event_path(category) %></td> ||
 <% end %>
     
+<!-- se utiliza el yield colocado en applicacion.html.erb para introducir el siguiente bloque. -->
 <%= content_for(:head) do %>
   <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 
