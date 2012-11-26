@@ -44,6 +44,7 @@
     <th>Longitude</th>
     <th>Description</th>
     <th>Category</th>
+    <th>Created by</th>
     <th></th>
     <th></th>
     <th></th>
@@ -58,6 +59,7 @@
     <td><%= event.longitude %></td>
     <td><%= event.description %></td>
     <td><%= event.category.name %></td>
+    <td><%= event.user.name %></td>
     <td><%= link_to 'Show', event %></td>
     <td><%= link_to 'Edit', edit_event_path(event) %></td>
     <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>

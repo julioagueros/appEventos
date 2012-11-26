@@ -1,4 +1,5 @@
 class Event < ActiveRecord::Base
   belongs_to :category
-  attr_accessible :description, :endDateTime, :latitude, :longitude, :name, :startDateTime, :category_id
+  belongs_to :user
+  attr_accessible :description, :endDateTime, :latitude, :longitude, :name, :startDateTime, :category_id, :user_id
 end

@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
   
+  skip_before_filter :require_login, :only => [:create]  
+
   #función para crear el usuario en session (logearlo).
   def create
         #raise request.env["omniauth.auth"].to_yaml

@@ -51,11 +51,11 @@
     <div id = "form">
       <div class="field">
         <%= f.label :name %><br />
-        <%= f.text_field :name %>
+        <%= f.text_field :name, :required => true, :placeholder => 'Type the event name.' %>
       </div>
       <div class="field">
         <%= f.label :category_id %>
-        <%= f.collection_select :category_id, Category.all, :id, :name %>
+        <%= f.collection_select :category_id, Category.all, :id, :name%>
       </div>
       <div class="field">
         <%= f.label :startDateTime %><br />
@@ -65,18 +65,18 @@
         <%= f.label :endDateTime %><br />
         <%= f.datetime_select :endDateTime %>
       </div>
-      <div class="field">
-        
-        <!--<%= f.hidden_field :user_id,  :value => @userId %>-->
+      <div class="field">        
         <%= f.hidden_field :latitude %>
       </div>
-      <div class="field">
-        
+      <div class="field">        
         <%= f.hidden_field :longitude %>
       </div>
       <div class="field">
         <%= f.label :description %><br />
-        <%= f.text_area :description %>
+        <%= f.text_area :description, :required => true, :placeholder => 'Type an event description.' %>
+      </div>
+      <div class="field">
+        <%= f.hidden_field :user_id,  :value => @userId %>
       </div>
       <div class="actions">
         <%= f.submit %>

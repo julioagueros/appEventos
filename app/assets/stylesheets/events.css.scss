@@ -74,15 +74,17 @@ a:hover {
 	padding-left:20px;
 	padding-right:0px;
 	margin:0 auto;
+	width:350px;
 }
 
 
 #map_canvas {
 	float:right;
 	padding-left:20px;
-	width:70%;
+	width:60%;
 	height:90%;
 	margin:0 auto;
+	margin-right:50px;
 }
 //para mapa de index de eventos.
 #map_canvas2 {
@@ -91,6 +93,11 @@ a:hover {
 	width:70%;
 	height:90%;
 	margin:0 auto;
+}
+
+#error_msj {
+	font-size: 1.6em;
+	color: #e10500
 }
 
 

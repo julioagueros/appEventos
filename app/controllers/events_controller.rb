@@ -55,7 +55,7 @@ class EventsController < ApplicationController
   # GET /events/new.json
   def new
     @event = Event.new
-
+    @userId = session[:user_id]
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @event }
@@ -65,6 +65,14 @@ class EventsController < ApplicationController
   # GET /events/1/edit
   def edit
     @event = Event.find(params[:id])
+    #Si el evento no pertenece al usuario que está haciendo la solicitud
+    #se le envía un mensaje de error y se le dirige a la página principal
+    if (@event.user_id == session[:user_id])
+        @userId = session[:user_id]
+    else
+      flash[:error] = "You don't have permission to access that."
+      redirect_to root_url # halts request cycle
+    end
   end
 
   # POST /events
@@ -103,8 +111,11 @@ class EventsController < ApplicationController
   # DELETE /events/1.json
   def destroy
     @event = Event.find(params[:id])
-    @event.destroy
-
+    #Si el evento no pertenece al usuario que está haciendo la solicitud
+    #se le envía un mensaje de error y se le dirige a la página principal
+    if (@event.user_id == session[:user_id])
+        @event.destroy
+    end
     respond_to do |format|
       format.html { redirect_to events_url }
       format.json { head :no_content }

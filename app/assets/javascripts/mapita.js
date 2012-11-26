@@ -6,6 +6,7 @@ var marker;
 
 //alert(eventoJson.name)
 
+//funcion para inicializar el google map con centro en el TEC.
 function initialize() {
 	geocoder = new google.maps.Geocoder();
 	var myOptions = {
@@ -15,6 +16,8 @@ function initialize() {
 	};
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
 
+	//revisar si el JSON es nulo, indicando que no existe un evento,
+	//por lo que no se debe pintar ningún marker todavía.
 	if (eventoJson !== null){
 		//var name = eventoJson.name;
 		//var description = eventoJson.description;
@@ -61,8 +64,8 @@ function placeMarker(location) {
 }
 
 // Entradas: Un marcador
-// Proceso:	La función obtiene la latitud y longitud del marcador que ingresa.
-// Salidas:	La latitud y longitud en textfields escondidos en el form.
+// Proceso:	La función obtiene la latitud y longitud del parámetro de entrada, marker.
+// Envía la latitud y longitud a textfields escondidos en el form.
 function getPosSendPosToInput(marker) {
 	latlng = marker.getPosition();
 	lat = latlng.lat();

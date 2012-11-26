@@ -19,14 +19,20 @@
   <%= yield(:head) %>
 </head>
 <body onload="initialize()">
-	
-    <div id="user_nav">
+	<div id="user_nav">
       <% if current_user %>
         Welcome, <%= current_user.name %>!
         <%= link_to "Sign Out", signout_path %>
       <% else %>
         <%= link_to "Sign in with Twitter" ,"/auth/twitter" %>
       <% end %>
+  </div>
+
+<!--Para mostrar mensajes de error de flash.-->
+  <div id="error_msj">
+    <% flash.each do |name, msg| %>
+      <%= content_tag :div, msg, :id => "flash#{name}" %>
+    <% end %>
   </div>
 
   <br />
@@ -52,9 +58,10 @@
 
 <%= yield %>
 
-<div id="footer">
-  <p>Common Creatives Pending (cc) 2012 correcriminal.org. All rights reserved?. Design by <a href="http://www.freecsstemplates.org">FCT</a>. Modified by <a href="http://www.correcriminal.org">JAS</a>.</p> 
-</div>
+  <div id="footer">
+    <p>Common Creatives Pending (cc) 2012 correcriminal.org. All rights reserved?. Design by <a href="http://www.freecsstemplates.org">FCT</a>. Modified by <a href="http://www.correcriminal.org">JAS</a>.</p> 
+  </div>
+
 
 </body>
 </html>
