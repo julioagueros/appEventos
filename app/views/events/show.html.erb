@@ -1,40 +1,65 @@
-<p id="notice"><%= notice %></p>
+<%= content_for(:head) do %>
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYVUno5aIvhG_MHDc7WtrnA91derLa9WQ&sensor=false">
+    </script>
+        <!--Se serializan los eventos a un JSON para poder pasarlo al 
+        javascript. Éste es el tag para poder crear un script de javascript.
+        El raw es para escapar caracteres.
+        el Window es para poder compartir la variable para todos los javascripts que referencia esta página-->
+    <%= javascript_tag do %>
+        window.eventoJson = <%=raw @event.to_json %>;
+    <% end %>
+    
+    <%= javascript_include_tag "mapitashow" %>
 
-<p>
-  <b>Name:</b>
-  <%= @event.name %>
-</p>
+<% end %>
 
-<p>
-  <b>Startdatetime:</b>
-  <%= @event.startDateTime %>
-</p>
+<div id = "form">
+  <h1>Event:</h1>
+  <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Enddatetime:</b>
-  <%= @event.endDateTime %>
-</p>
+  <p>
+    <b>Name:</b>
+    <%= @event.name %>
+  </p>
 
-<p>
-  <b>Latitude:</b>
-  <%= @event.latitude %>
-</p>
+  <p>
+    <b>Start time & date:</b>
+    <%= @event.startDateTime %>
+  </p>
 
-<p>
-  <b>Longitude:</b>
-  <%= @event.longitude %>
-</p>
+  <p>
+    <b>End time & date:</b>
+    <%= @event.endDateTime %>
+  </p>
 
-<p>
-  <b>Description:</b>
-  <%= @event.description %>
-</p>
+  <p>
+    <b>Latitude:</b>
+    <%= @event.latitude %>
+  </p>
 
-<p>
-  <b>Category:</b>
-  <%= @event.category.name %>
-</p>
+  <p>
+    <b>Longitude:</b>
+    <%= @event.longitude %>
+  </p>
+
+  <p>
+    <b>Description:</b>
+    <%= @event.description %>
+  </p>
+
+  <p>
+    <b>Category:</b>
+    <%= @event.category.name %>
+  </p>
 
 
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+
+
+  <%= link_to 'Edit', edit_event_path(@event), :class => 'link-style' %> |
+  <%= link_to 'Back', events_path, :class => 'link-style' %>
+</div>
+
+  <div id="map_canvas">
+  </div>
