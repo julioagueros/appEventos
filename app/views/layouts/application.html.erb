@@ -25,7 +25,7 @@
         Welcome, <%= current_user.name %>!
         <%= link_to "Sign Out", signout_path %>
       <% else %>
-        <%= link_to "Sign in with Twitter", "/auth/twitter" %>
+        <%= link_to "Sign in with Twitter" ,"/auth/twitter" %>
       <% end %>
   </div>
 
@@ -33,18 +33,17 @@
 
     <div id="header">
     <div id="logo">
-      <div id="banner"><a href="/"><img src="assets/logo.gif"/></a></div>
+      <div id="banner"><%= image_tag "logo.gif" %></div>
     </div>
   </div>
   <!-- end #header -->
   <div id="menu">
     <ul>
-      <li class="current_page_item"><a href="/">Home</a></li>
-      <li><a href="#">See Events</a></li>
-      <li><a href="#">Create an Event</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Links</a></li>
-      <li class="last"><a href="#">Contact</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/events">Events</a></li>
+      <li><a href="/events/new">Create an Event</a></li>
+      <li><a href="/categories">Categories</a></li>
+      <li><a href="/categories/new">Create a Category</a></li>
     </ul>
   </div>
 
@@ -54,7 +53,7 @@
 <%= yield %>
 
 <div id="footer">
-  <p>Copyright (c) 2012 correcriminal.org. All rights reserved. Design by <a href="http://www.freecsstemplates.org">FCT</a>.</p>
+  <p>Common Creatives Pending (cc) 2012 correcriminal.org. All rights reserved?. Design by <a href="http://www.freecsstemplates.org">FCT</a>. Modified by <a href="http://www.correcriminal.org">JAS</a>.</p> 
 </div>
 
 </body>

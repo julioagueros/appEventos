@@ -28,7 +28,8 @@
             <td><%= link_to category.name, categorize_event_path(category) %></td> ||
             <% end %>
             <br />
-            <%= link_to 'New Event', new_event_path %>       
+            <%= link_to 'New Event', {:controller =>'events' ,:action =>'new'}, :class => 'link-style'%>
+             <!--<%= link_to 'New Event', new_event_path %>-->
         </div>
     </div>
 
@@ -37,8 +38,8 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Startdatetime</th>
-    <th>Enddatetime</th>
+    <th>Start time & date</th>
+    <th>End time & date</th>
     <th>Latitude</th>
     <th>Longitude</th>
     <th>Description</th>
@@ -63,12 +64,15 @@
   </tr>
 <% end %>
 </table>
-
-<br />
     <!--Se llama a renderizar el canvas del googlemap-->
-    <div id="map_canvas">
+    <div id="map_canvas2">
     </div>  
 
 </div>
+<br />
+<br />
+<br />
+
+
 
 

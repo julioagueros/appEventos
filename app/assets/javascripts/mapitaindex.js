@@ -14,7 +14,7 @@ function initialize() {
 		center: new google.maps.LatLng(9.85398990406704, -83.90923976898193),
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
-	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
+	map = new google.maps.Map(document.getElementById("map_canvas2"), myOptions);
 	
 	//Para a cada evento (pasado como un JSON llamado eventosJson) extraer la información necesaria para markers e infowindows.
 	for (var i = 0, len = eventosJson.length; i < len; i++) {

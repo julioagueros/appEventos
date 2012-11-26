@@ -46,7 +46,7 @@
     </div>
   <% end %>
 
-  <div id="wrapper">
+  <!--<div id="wrapper">-->
 
     <div id = "form">
       <div class="field">
@@ -66,13 +66,13 @@
         <%= f.datetime_select :endDateTime %>
       </div>
       <div class="field">
-        <%= f.label :latitude %><br />
+        
         <!--<%= f.hidden_field :user_id,  :value => @userId %>-->
-        <%= f.text_field :latitude %>
+        <%= f.hidden_field :latitude %>
       </div>
       <div class="field">
-        <%= f.label :longitude %><br />
-        <%= f.text_field :longitude %>
+        
+        <%= f.hidden_field :longitude %>
       </div>
       <div class="field">
         <%= f.label :description %><br />
@@ -88,7 +88,7 @@
     </div>
 
 
-  </div>
+  <!--</div>-->
 
     <div id="map_canvas">
     </div>  

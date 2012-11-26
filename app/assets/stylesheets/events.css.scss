@@ -14,6 +14,7 @@ body {
 	font-size: 14px;
 	color: #000000;
 }
+
 //SE ACABA PARTECITA MIA
 
 
@@ -51,6 +52,7 @@ a {
 }
 
 a:hover {
+	background:#dce100
 }
 
 
@@ -58,7 +60,7 @@ a:hover {
 //PARTECITA MIA
 #wrapper {
 	margin-top:2px;
-	margin-bottom:0;
+	margin-bottom:200px;
 	margin-left: auto;
 	margin-right:auto;
 	height:97%;
@@ -70,7 +72,7 @@ a:hover {
 	float:left;
 	padding-top:6px;
 	padding-left:20px;
-	padding-right:20px;
+	padding-right:0px;
 	margin:0 auto;
 }
 
@@ -78,10 +80,19 @@ a:hover {
 #map_canvas {
 	float:right;
 	padding-left:20px;
-	width:50%;
+	width:70%;
 	height:90%;
 	margin:0 auto;
 }
+//para mapa de index de eventos.
+#map_canvas2 {
+	//float:center;
+	padding-left:0px;
+	width:70%;
+	height:90%;
+	margin:0 auto;
+}
+
 
 //SE ACABA PARTECITA MÍA
 
@@ -224,12 +235,13 @@ Released for free under a Creative Commons Attribution 2.5 License
 	border: none;
 }
 
-#menu a:hover, #menu .current_page_item a {
+#menu a:hover  {
 	text-decoration: none;
+	background: #dce100;
 }
 
 #menu .current_page_item a {
-	color: #FFFFFF;
+	color: #dce100;
 }
 
 #menu .last {
