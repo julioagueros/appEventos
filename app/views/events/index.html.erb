@@ -61,8 +61,11 @@
     <td><%= event.category.name %></td>
     <td><%= event.user.name %></td>
     <td><%= link_to 'Show', event %></td>
-    <td><%= link_to 'Edit', edit_event_path(event) %></td>
-    <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <!--Si el user en session es el creador del evento, entonces mostrarle links de editar y borrar-->
+    <% if event.user_id == @user_id %>
+        <td><%= link_to 'Edit', edit_event_path(event) %></td>
+        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>        
   </tr>
 <% end %>
 </table>

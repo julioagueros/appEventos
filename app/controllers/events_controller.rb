@@ -12,7 +12,9 @@ class EventsController < ApplicationController
     #se agregan las categorias para poder navegar a través de ellas.
     @categories = Category.all
 
-
+    #Se envía el usuario en session para poder distinguir a quién se le debe mostrar
+    #los links de editar y borrar y a quién no.
+    @user_id = session[:user_id]
 
     respond_to do |format|
       format.html # index.html.erb
